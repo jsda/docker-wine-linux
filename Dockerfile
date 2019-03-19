@@ -2,10 +2,10 @@
 #Author: Rokas_Urbelis
 #Email : Rokas.Yang@gmail.com
 #Blog  : https://blog.linux-code.com
-FROM ubuntu:latest
+FROM rdvde/builder
 MAINTAINER RokasUrbelis(Based on github deepin-wine-ubuntu project)
-
-ADD deepin-wine-ubuntu /root/deepin-wine-ubuntu
+RUN git clone https://github.com/wszqkzqk/deepin-wine-ubuntu.git
+RUN mv deepin-wine-ubuntu /root/deepin-wine-ubuntu
 COPY link.sh /root/
 COPY deb/ /root/deepin-wine-ubuntu/
 #COPY sources.list /etc/apt/
@@ -23,7 +23,7 @@ RUN \
 
 # Define default command.
 
-RUN yes|bash /root/deepin-wine-ubuntu/install.sh
+RUN yes|bash /root/deepin-wine-ubuntu/KDE-install.sh
 #RUN cd && ln -s /opt/deepin-wine-ubuntu/app/* .
 RUN /bin/bash /root/link.sh && rm -f /root/link.sh
 RUN rm -rf /root/deepin-wine-ubuntu
