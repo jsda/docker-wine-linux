@@ -4,8 +4,9 @@
 #Blog  : https://blog.linux-code.com
 FROM rdvde/builder
 MAINTAINER RokasUrbelis(Based on github deepin-wine-ubuntu project)
-RUN git clone https://github.com/wszqkzqk/deepin-wine-ubuntu.git
-RUN mv /deepin-wine-ubuntu /root/deepin-wine-ubuntu
+RUN \
+    cd  /root && \
+    git clone https://github.com/wszqkzqk/deepin-wine-ubuntu.git
 COPY link.sh /root/
 COPY deb/ /root/deepin-wine-ubuntu/
 #COPY sources.list /etc/apt/
