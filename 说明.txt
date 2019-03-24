@@ -11,3 +11,6 @@ WeChat
 BaiduNetDisk
 ThunderSpeed
 Foxmail
+
+提示No protocol specified错误，请在主机运行：
+xhost +
