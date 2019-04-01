@@ -30,10 +30,7 @@ RUN yes|bash /root/deepin-wine-ubuntu/install.sh
 #RUN cd && ln -s /opt/deepin-wine-ubuntu/app/* .
 RUN /bin/bash /root/link.sh && rm -f /root/link.sh
 RUN rm -rf /root/deepin-wine-ubuntu
-RUN groupadd -r wine && useradd -r -g wine -G audio,video wine \
-    && mkdir -p /home/wine/Downloads && chown -R wine:wine /home/wine \
-    && usermod -u 1000 wine \
-    && groupmod -g 1000 wine
-USER wine
+
+USER lede
 
 CMD ["/bin/bash"]
