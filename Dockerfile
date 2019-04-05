@@ -2,9 +2,8 @@
 #Author: Rokas_Urbelis
 #Email : Rokas.Yang@gmail.com
 #Blog  : https://blog.linux-code.com
-FROM rdvde/builder
+FROM rdvde/ubuntu-desktop-lxde-vnc
 MAINTAINER RokasUrbelis(Based on github deepin-wine-ubuntu project)
-USER root
 WORKDIR /
 RUN \
     git clone https://github.com/wszqkzqk/deepin-wine-ubuntu.git && \
@@ -31,6 +30,9 @@ RUN yes|bash /root/deepin-wine-ubuntu/install.sh
 RUN /bin/bash /root/link.sh && rm -f /root/link.sh
 RUN rm -rf /root/deepin-wine-ubuntu
 
-USER lede
-
-CMD ["/bin/bash"]
+EXPOSE 80
+WORKDIR /root
+ENV HOME=/home/ubuntu \
+    SHELL=/bin/bash
+HEALTHCHECK --interval=30s --timeout=5s CMD curl --fail http://127.0.0.1:6079/api/health
+ENTRYPOINT ["/startup.sh"]
