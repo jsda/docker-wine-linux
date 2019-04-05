@@ -5,9 +5,13 @@
 FROM rdvde/ubuntu-desktop-lxde-vnc
 MAINTAINER RokasUrbelis(Based on github deepin-wine-ubuntu project)
 WORKDIR /
-RUN \
-    git clone https://github.com/wszqkzqk/deepin-wine-ubuntu.git && \
-    mv deepin-wine-ubuntu /root/
+RUN apt update \
+    && apt install -y git \
+    && apt autoclean -y \
+    && apt autoremove -y \
+    && rm -rf /var/lib/apt/lists/* \
+    && git clone https://github.com/wszqkzqk/deepin-wine-ubuntu.git \
+    && mv deepin-wine-ubuntu /root/
 COPY link.sh /root/
 COPY deb/ /root/deepin-wine-ubuntu/
 #COPY sources.list /etc/apt/
