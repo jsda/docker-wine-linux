@@ -1,5 +1,12 @@
 1.创建容器
-docker run -d -ti -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY  -e GDK_SCALE -e GDK_DPI_SCALE --name wine rdvde/wine
+docker run -d -ti \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -e DISPLAY=unix$DISPLAY \
+  -e GDK_SCALE \
+  -e GDK_DPI_SCALE \
+  --name wine \
+  rdvde/wine
+
 2.运行容器
 docker exec -ti wine /bin/bash
 或者
