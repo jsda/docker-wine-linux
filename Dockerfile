@@ -4,6 +4,8 @@
 #Blog  : https://blog.linux-code.com
 FROM rdvde/ubuntu-desktop-lxde-vnc
 MAINTAINER RokasUrbelis(Based on github deepin-wine-ubuntu project)
+ENV HOME=/home/user \
+    SHELL=/bin/bash
 WORKDIR /
 RUN apt update \
     && apt install -y git \
@@ -29,14 +31,13 @@ RUN \
 
 # Define default command.
 
-RUN yes|bash /root/deepin-wine-ubuntu/KDE-install.sh
+RUN cd /root/deepin-wine-ubuntu \
+    && yes|bash ./KDE-install.sh
 #RUN cd && ln -s /opt/deepin-wine-ubuntu/app/* .
 RUN /bin/bash /root/link.sh && rm -f /root/link.sh
 RUN rm -rf /root/deepin-wine-ubuntu
 
 EXPOSE 80
 WORKDIR /root
-ENV HOME=/home/ubuntu \
-    SHELL=/bin/bash
 HEALTHCHECK --interval=30s --timeout=5s CMD curl --fail http://127.0.0.1:6079/api/health
 ENTRYPOINT ["/startup.sh"]
