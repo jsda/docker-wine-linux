@@ -29,7 +29,7 @@ RUN \
 
 # Define default command.
 
-RUN yes|bash /root/deepin-wine-ubuntu/install.sh
+RUN yes|bash /root/deepin-wine-ubuntu/KDE-install.sh
 #RUN cd && ln -s /opt/deepin-wine-ubuntu/app/* .
 RUN /bin/bash /root/link.sh && rm -f /root/link.sh
 RUN rm -rf /root/deepin-wine-ubuntu
