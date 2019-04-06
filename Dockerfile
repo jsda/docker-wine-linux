@@ -32,8 +32,8 @@ RUN \
 # Define default command.
 
 RUN cd /root/deepin-wine-ubuntu \
-    && mkdir -p $HOME/.config/autostart-scripts/ \
-    && yes|bash ./KDE-install.sh
+    #&& mkdir -p $HOME/.config/autostart-scripts/ \
+    && yes|bash ./install.sh
 #RUN cd && ln -s /opt/deepin-wine-ubuntu/app/* .
 RUN /bin/bash /root/link.sh && rm -f /root/link.sh
 RUN rm -rf /root/deepin-wine-ubuntu
