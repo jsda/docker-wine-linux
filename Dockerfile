@@ -6,9 +6,9 @@ FROM ubuntu:latest
 MAINTAINER RokasUrbelis(Based on github deepin-wine-ubuntu project)
 
 WORKDIR /
-RUN groupadd -r ubuntu
+RUN groupadd -r ubuntu \
     && useradd -r -g ubuntu -G audio,video ubuntu \
-    && mkdir -p /home/ubuntu/Downloads
+    && mkdir -p /home/ubuntu/Downloads \
     && chown -R ubuntu:ubuntu /home/ubuntu \
     && usermod -u 1000 ubuntu \
     && groupmod -g 1000 ubuntu \
