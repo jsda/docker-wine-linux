@@ -13,6 +13,8 @@ docker run --rm -ti \
   --name wine \
   rdvde/wine
 ````
+## 1.2 输入需要运行的程序名
+
 ## 2.1 后台运行容器
 ````
 docker run -d -ti \
@@ -26,13 +28,13 @@ docker run -d -ti \
   rdvde/wine
 ````
 #### 2.2 启动命令窗口
-````
-docker exec -ti wine /bin/bash
-````
-或者
-````
-docker restart wine && docker exec -ti wine /bin/bash
-````
+
+$ docker exec -ti wine /bin/bash
+
+#### 2.3 以后再次运行
+
+$ docker restart wine && docker exec -ti wine /bin/bash
+
 ## 1.2＆2.3 执行需要运行的应用
 QQ
 TIM
