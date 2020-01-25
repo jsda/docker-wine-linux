@@ -17,7 +17,7 @@ RUN groupadd -r ubuntu \
     && apt autoclean -y \
     && apt autoremove -y \
     && rm -rf /var/lib/apt/lists/* \
-    && git clone https://github.com/RokasUrbelis/deepin-wine-ubuntu.git \
+    && git clone https://github.com/wszqkzqk/deepin-wine-ubuntu.git \
     && mv deepin-wine-ubuntu /root/
 COPY link.sh /root/
 COPY deb/ /root/deepin-wine-ubuntu/
