@@ -2,7 +2,7 @@
 #Author: Rokas_Urbelis
 #Email : Rokas.Yang@gmail.com
 #Blog  : https://blog.linux-code.com
-FROM ubuntu:latest
+FROM ubuntu:18.04
 MAINTAINER RokasUrbelis(Based on github deepin-wine-ubuntu project)
 
 WORKDIR /
