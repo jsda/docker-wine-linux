@@ -2,7 +2,7 @@
 #Author: Rokas_Urbelis
 #Email : Rokas.Yang@gmail.com
 #Blog  : https://blog.linux-code.com
-FROM ubuntu:18.04
+FROM ubuntu:latest
 MAINTAINER RokasUrbelis(Based on github deepin-wine-ubuntu project)
 
 WORKDIR /
@@ -34,7 +34,8 @@ RUN \
 
 RUN cd /root/deepin-wine-ubuntu \
     #&& mkdir -p $HOME/.config/autostart-scripts/ \
-    && yes|bash ./install.sh
+    && yes|bash ./install.sh \
+    && dpkg -i *.deb
 #RUN cd && ln -s /opt/deepin-wine-ubuntu/app/* .
 RUN /bin/bash /root/link.sh && rm -f /root/link.sh
 RUN rm -rf /root/deepin-wine-ubuntu
