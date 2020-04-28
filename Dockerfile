@@ -13,7 +13,7 @@ RUN groupadd -r ubuntu \
     && usermod -u 1000 ubuntu \
     && groupmod -g 1000 ubuntu \
     && apt update \
-    && apt install -y git wget git locales ttf-wqy-zenhei sudo \
+    && apt install -y git wget git locales ttf-wqy-zenhei sudo libjpeg62:i386 \
     && git clone https://github.com/wszqkzqk/deepin-wine-ubuntu.git \
     && apt remove --purge git -y \
     && apt autoremove --purge -y \
