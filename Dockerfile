@@ -6,7 +6,6 @@ FROM ubuntu:latest
 MAINTAINER RokasUrbelis(Based on github deepin-wine-ubuntu project)
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=Asia/Taipei
 
 WORKDIR /
 RUN groupadd -r ubuntu \
@@ -16,7 +15,9 @@ RUN groupadd -r ubuntu \
     && usermod -u 1000 ubuntu \
     && groupmod -g 1000 ubuntu \
     && apt update \
-    && apt install -y git wget git locales ttf-wqy-zenhei sudo \
+    && apt install -y git wget git locales ttf-wqy-zenhei sudo tzdata \
+    && ln -fs /usr/share/zoneinfo/Asia/Taipei /etc/localtime \
+    && dpkg-reconfigure --frontend noninteractive tzdata \
     && git clone --depth 1 https://github.com/wszqkzqk/deepin-wine-ubuntu.git \
     && apt remove --purge git -y \
     && apt autoremove --purge -y \
