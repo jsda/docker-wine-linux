@@ -6,7 +6,7 @@ FROM ubuntu:latest
 MAINTAINER RokasUrbelis(Based on github deepin-wine-ubuntu project)
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=Asia/TaiPei
+ENV TZ=Asia/Taipei
 
 WORKDIR /
 RUN groupadd -r ubuntu \
