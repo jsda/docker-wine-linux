@@ -17,7 +17,7 @@ RUN groupadd -r ubuntu \
     && groupmod -g 1000 ubuntu \
     && apt update \
     && apt install -y git wget git locales ttf-wqy-zenhei sudo \
-    && git clone https://github.com/wszqkzqk/deepin-wine-ubuntu.git \
+    && git clone --depth 1 https://github.com/wszqkzqk/deepin-wine-ubuntu.git \
     && apt remove --purge git -y \
     && apt autoremove --purge -y \
     && apt autoclean -y \
