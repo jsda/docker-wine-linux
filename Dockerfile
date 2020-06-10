@@ -14,7 +14,7 @@ RUN groupadd -r ubuntu \
     && chown -R ubuntu:ubuntu /home/ubuntu \
     && usermod -u 1000 ubuntu \
     && groupmod -g 1000 ubuntu \
-    && echo "deb http://mirrors.aliyun.com/deepin stable main contrib non-free" > /etc/apt/sources.list \
+    && echo "deb [by-hash=force] http://mirrors.aliyun.com/deepin stable main contrib non-free" > /etc/apt/sources.list \
     && apt update \
     && apt install -y wget locales ttf-wqy-zenhei sudo tzdata \
     && locale-gen en_US.UTF-8 zh_CN.UTF-8 zh_CN.GBK \
