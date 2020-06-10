@@ -14,35 +14,21 @@ RUN groupadd -r ubuntu \
     && chown -R ubuntu:ubuntu /home/ubuntu \
     && usermod -u 1000 ubuntu \
     && groupmod -g 1000 ubuntu \
+    && echo "deb [trusted=yes] http://mirrors.aliyun.com/deepin stable main contrib non-free" | sudo tee /etc/apt/sources.list.d/deepin.list \
     && apt update \
-    && apt install -y git wget git locales ttf-wqy-zenhei sudo tzdata \
+    && apt install -y wget locales ttf-wqy-zenhei sudo tzdata \
+    && locale-gen en_US.UTF-8 zh_CN.UTF-8 zh_CN.GBK \
+    && update-locale LANG=zh_CN.UTF-8 \
+    && apt install -t bionic deepin.com.wechat deepin.com.qq.im -fy \
+    && echo "root:password" | chpasswd \
     && ln -fs /usr/share/zoneinfo/Asia/Taipei /etc/localtime \
     && dpkg-reconfigure --frontend noninteractive tzdata \
-    && git clone --depth 1 https://github.com/wszqkzqk/deepin-wine-ubuntu.git \
-    && apt remove --purge git -y \
     && apt autoremove --purge -y \
     && apt autoclean -y \
-    && rm -rf /var/lib/apt/lists/* \
-    && mv deepin-wine-ubuntu /root/
-COPY link.sh /root/
-COPY deb/ /root/deepin-wine-ubuntu/
+    && rm -rf /var/lib/apt/lists/*
 
 ENV LC_CTYPE=zh_CN.UTF-8 \
     XMODIFIERS="@im=fcitx"
-
-RUN \
-  locale-gen en_US.UTF-8 zh_CN.UTF-8 \
-  zh_CN.GBK && \
-  update-locale LANG=zh_CN.UTF-8
-
-# Define default command.
-
-RUN cd /root/deepin-wine-ubuntu \
-    #&& mkdir -p $HOME/.config/autostart-scripts/ \
-    && yes|bash ./install.sh
-#RUN cd && ln -s /opt/deepin-wine-ubuntu/app/* .
-RUN /bin/bash /root/link.sh && rm -f /root/link.sh
-RUN rm -rf /root/deepin-wine-ubuntu
 
 USER ubuntu
 CMD ["/bin/bash"]
