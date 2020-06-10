@@ -19,7 +19,7 @@ RUN groupadd -r ubuntu \
     && apt install -y wget locales ttf-wqy-zenhei sudo tzdata \
     && locale-gen en_US.UTF-8 zh_CN.UTF-8 zh_CN.GBK \
     && update-locale LANG=zh_CN.UTF-8 \
-    && apt install -t bionic deepin.com.wechat deepin.com.qq.im -fy \
+    && apt install deepin.com.wechat deepin.com.qq.im -fy \
     && echo "root:password" | chpasswd \
     && ln -fs /usr/share/zoneinfo/Asia/Taipei /etc/localtime \
     && dpkg-reconfigure --frontend noninteractive tzdata \
