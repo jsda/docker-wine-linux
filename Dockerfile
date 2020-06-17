@@ -15,18 +15,21 @@ RUN groupadd -r ubuntu \
     && usermod -u 1000 ubuntu \
     && groupmod -g 1000 ubuntu \
     && apt update \
-    && apt install -y wget locales ttf-wqy-zenhei sudo tzdata \
+    && apt install -y wget gnupg2 locales ttf-wqy-zenhei sudo tzdata \
     && locale-gen en_US.UTF-8 zh_CN.UTF-8 zh_CN.GBK \
     && update-locale LANG=zh_CN.UTF-8 \
-    && wget -q https://mirrors.aliyun.com/deepin/dists/stable/Release.gpg -O- | apt-key add - \
-    && apt-key adv --fetch-keys https://mirrors.aliyun.com/deepin/dists/stable/Release.gpg \
+    #&& wget -q https://mirrors.aliyun.com/deepin/dists/stable/Release.gpg -O- | apt-key add - \
+    #&& apt-key adv --fetch-keys https://mirrors.aliyun.com/deepin/dists/stable/Release.gpg \
+    && echo "deb [trusted=yes] http://mirrors.aliyun.com/deepin lion main contrib non-free" >> /etc/apt/sources.list \
+    #&& echo "deb [trusted=yes] https://deepin-wine.i-m.dev /" >> /etc/apt/sources.list \
+    && apt update \
     && apt install deepin.com.wechat deepin.com.qq.im -fy \
     && echo "root:password" | chpasswd \
     && ln -fs /usr/share/zoneinfo/Asia/Taipei /etc/localtime \
     && dpkg-reconfigure --frontend noninteractive tzdata \
     && apt autoremove --purge -y \
     && apt autoclean -y \
-    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /var/lib/apt/lists/*
 
 ENV LC_CTYPE=zh_CN.UTF-8 \
     XMODIFIERS="@im=fcitx"
