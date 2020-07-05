@@ -17,9 +17,7 @@ RUN groupadd -r ubuntu \
     && usermod -u 1000 ubuntu \
     && groupmod -g 1000 ubuntu \
     && apt update \
-    && apt install -y wget locales ttf-wqy-zenhei sudo tzdata \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y keyboard-configuration \
-    && localectl set-keymap zh_CN.UTF-8 \
+    && DEBIAN_FRONTEND=noninteractive apt install -y wget locales ttf-wqy-zenhei sudo tzdata keyboard-configuration \
     && locale-gen en_US.UTF-8 zh_CN.UTF-8 zh_CN.GBK \
     && update-locale LANG=zh_CN.UTF-8 \
     && yes|bash /root/deepin-wine-ubuntu/install_*.sh \
