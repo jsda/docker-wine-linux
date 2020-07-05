@@ -7,7 +7,6 @@ MAINTAINER RokasUrbelis(Based on github deepin-wine-ubuntu project)
 
 ENV DEBIAN_FRONTEND=noninteractive
 COPY link.sh /root/
-COPY winedeb/* /root/deepin-wine-ubuntu/
 
 WORKDIR /
 RUN groupadd -r ubuntu \
@@ -20,10 +19,8 @@ RUN groupadd -r ubuntu \
     && DEBIAN_FRONTEND=noninteractive apt install -y wget locales ttf-wqy-zenhei sudo tzdata keyboard-configuration \
     && locale-gen en_US.UTF-8 zh_CN.UTF-8 zh_CN.GBK \
     && update-locale LANG=zh_CN.UTF-8 \
-    && yes|bash /root/deepin-wine-ubuntu/install_*.sh \
     && /bin/bash /root/link.sh \
     && rm -f /root/link.sh \
-    && rm -rf /root/deepin-wine-ubuntu \
     #&& git clone --depth 1 https://github.com/wszqkzqk/deepin-wine-ubuntu.git \
     #&& apt remove --purge git -y \
     #&& apt autoremove --purge -y \
