@@ -2,7 +2,7 @@
 #Author: Rokas_Urbelis
 #Email : Rokas.Yang@gmail.com
 #Blog  : https://blog.linux-code.com
-FROM ubuntu:18.04
+FROM ubuntu:latest
 MAINTAINER RokasUrbelis(Based on github deepin-wine-ubuntu project)
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -17,7 +17,7 @@ RUN groupadd -r ubuntu \
     && groupmod -g 1000 ubuntu \
     && apt update \
     && DEBIAN_FRONTEND=noninteractive apt install -y wget locales ttf-wqy-zenhei sudo tzdata keyboard-configuration \
-    apt-transport-https ca-certificates curl python-software-properties software-properties-common \
+    apt-transport-https ca-certificates curl python-software-properties \
     && locale-gen en_US.UTF-8 zh_CN.UTF-8 zh_CN.GBK \
     && update-locale LANG=zh_CN.UTF-8 \
     && /bin/bash /root/link.sh \
