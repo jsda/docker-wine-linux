@@ -17,7 +17,7 @@ RUN groupadd -r ubuntu \
     && groupmod -g 1000 ubuntu \
     && apt update \
     && DEBIAN_FRONTEND=noninteractive apt install -y wget locales ttf-wqy-zenhei sudo tzdata keyboard-configuration \
-    apt-transport-https ca-certificates curl python-software-properties \
+    apt-transport-https ca-certificates curl software-properties-common \
     && locale-gen en_US.UTF-8 zh_CN.UTF-8 zh_CN.GBK \
     && update-locale LANG=zh_CN.UTF-8 \
     && /bin/bash /root/link.sh \
