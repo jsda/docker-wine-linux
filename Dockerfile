@@ -7,6 +7,7 @@ MAINTAINER RokasUrbelis(Based on github deepin-wine-ubuntu project)
 
 ENV DEBIAN_FRONTEND=noninteractive
 COPY link.sh /root/
+COPY deb/ /tmp/deepintemp/
 
 WORKDIR /
 RUN groupadd -r ubuntu \
